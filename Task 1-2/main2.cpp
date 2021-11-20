@@ -2,26 +2,21 @@
 #include <cmath>
 #include <iostream>
 
-/**
-Многострочный коментарий
-*/
 using namespace std;
 
 /**
 *\brief функция вычисляет объём шара
-*\param R параметр R
-*\param M_PI число пи
+*\param radius радиус шара
 *\return 0 в случае успеха
 */
-double getV(double R);
+double getVolume(const double radius);
 
 /**
 *\brief функция вычисляет площадь поверхности шара
-*\param R параметр R
-*\param M_PI число пи
+*\param radius радиус шара
 *\return 0 в случае успеха
 */
-double getS(double R);
+double getSquare(const double radius);
 
 /**
 *\brief функция выводит результат вычислений на экран
@@ -29,22 +24,22 @@ double getS(double R);
 */
 int main()
 {
-    double R;
+    double radius;
     cout << "Введите радиус шара\n";
-    cin >> R;
-    const double V = getV(R);
-    const double S = getS(R);
+    cin >> radius;
+    const double volume = getVolume(radius);
+    const double square = getSquare(radius);
 
-    cout << "S==" << S << "  V==" << V;
+    cout << "S=" << square << "  V=" << volume;
     return 0;
 }
 
-double getV(double R)
+double getVolume(const double radius)
 {
-    return 4 * ((M_PI * pow(R, 3) / 3));
+    return 4 * ((M_PI * pow(radius, 3) / 3));
 }
 
-double getS(double R)
+double getSquare(const double radius)
 {
-    return 4 * (M_PI * pow(R, 2));
+    return 4 * (M_PI * pow(radius, 2));
 }

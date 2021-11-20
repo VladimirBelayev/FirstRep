@@ -2,9 +2,6 @@
 #include <cmath>
 #include <iostream>
 
-/**
-Многострочный коментарий
-*/
 using namespace std;
 
 /**
