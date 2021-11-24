@@ -2,59 +2,82 @@
 #include <cmath>
 #include <iostream>
 
-/**
-Многострочный коментарий
-*/
 using namespace std;
 
 /**
-*\brief функция вычисляет площадь трапеции ST
+*\brief функция вычисляет площадь трапеции SquareTrapezoid
 *\param a первое основание
 *\param b второе основание
 *\param h высота трапеции
 *\return 0 в случае успеха
 */
-double getST(double h,double a,double b);
+double getSquareTrapezoid(const double h, const double a, const double b);
 
 /**
-*\brief функция вычисляет площадь круга SK
-*\param R радиус круга
-*\param M_PI число пи
+*\brief функция вычисляет площадь круга SquareCircle
+*\param r радиус круга
 *\return 0 в случае успеха
 */
-double getSK(double R);
+double getSquareCircle(const double r);
 
 /**
-*\brief функция выводит результат вычислений на экран
+*\brief Выбор расчёта площади трапеции(0) или круга(1)
 *\return 0 в случае успеха
 */
+
+enum class ActionChoice { TrapezoidSquare, CircleSquare };
+
 int main()
 {
+    setlocale(LC_ALL, "Russian");
+
     double a;
-    double b;
-    double h;
-    double R;
-    cout << "Введите первое основание\n";
+    cout << "Введите первое основание трапеции\n";
     cin >> a;
+
+    double b;
     cout << "Введите второе основание\n";
     cin >> b;
+
+    double h;
     cout << "Введите высоту трапеции\n";
     cin >> h;
-    cout << "Введите радиус круга\n";
-    cin >> R;
-    const double ST = getST(a,b,h);
-    const double SK = getSK(R);
 
-    cout << "ST==" << ST << "  SK==" << SK;
+    double r;
+    cout << "Введите радиус круга\n";
+    cin >> r;
+
+    cout << "Введите выполняемое действие (Площадь трапеции = " << static_cast<int>(ActionChoice::TrapezoidSquare) << ", площадь круга = " << static_cast<int>(ActionChoice::CircleSquare) << ") ";
+    int input;
+    cin >> input;
+
+    const auto choice = static_cast<ActionChoice>(input);
+
+    switch (choice)
+    {
+    case ActionChoice::TrapezoidSquare:
+    {
+        const auto Tsquare = getSquareTrapezoid(h, a, b);
+        cout << "Площадь трапеции = " << Tsquare;
+        break;
+    }
+    case ActionChoice::CircleSquare:
+    {
+        const auto Csquare = getSquareCircle(r);
+        cout << "Площадь круга = " << Csquare;
+        break;
+    }
+    }
+    cout << endl;
     return 0;
 }
 
-double getST(double h, double a, double b)
+double getSquareTrapezoid(const double h, const double a, const double b)
 {
-    return 0, 5 * h * (a + b);
+    return (h * (a + b)) / 2;
 }
 
-double getSK(double R)
+double getSquareCircle(double r)
 {
-    return M_PI * pow(R, 2);
+    return M_PI * pow(r, 2);
 }
