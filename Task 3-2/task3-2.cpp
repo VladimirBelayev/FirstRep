@@ -1,50 +1,31 @@
-﻿#define _USE_MATH_DEFINES // for C++
-
-#include <iostream>
+﻿#include <iostream>
 #include <cmath>
-#include <iomanip>
 
 
 using namespace std;
 
 /**
- * \brief Функция находит факториал k
- * \param n Входной параметр
- * \return F-искомый факториал
- */
-int factorial(int n)
-{
-	int F = 1;
-	if (n == 0) {
-		return F;
-	}
-	else {
-		for (int i = 1; i <= n; ++i)
-		{
-			F *= i;
-		}
-	}
-	return F;
-}
-
-/**
  * \brief Функция находит сумму n членов заданной последовательности
- * \param n - количество членов последовательности
- * \param k - параметр нахождения членов последовательности
+ * \param n - количество членов последовательности которое необходимо сложить
+ * \param nk - член последовательности
+ * \param k - номер члена последовательности
  * \param sum - искомая сумма
  * \return 0 в случае успеха
  */
 int main()
 {
-	double k = 0;
-	double sum = 0;
+	int k;
+	k = 0;
 	int n;
-	int fact;
 	cout << "Сколько членов последовательности сложить?\n";
 	cin >> n;
-	while (k < n) {
-		sum = sum + pow(-1, k) / factorial(n);
-		k = k + 1;
+	double nk = pow(-1, k);
+	double sum;
+	sum = 0;
+	for (k = 0; k < n; k++)
+	{
+		nk = (nk * (-1)) / (k + 1);
+		sum += nk;
 	}
 	cout << "Сумма = " << sum;
 	return 0;
