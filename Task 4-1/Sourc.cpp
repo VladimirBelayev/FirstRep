@@ -97,7 +97,6 @@ int main() {
 
 	cout << "Все элементы массива, кратные 2, разделить на первый элемент:\n";
 	DivideAllElementsWithEvenNumbersByTheFirstElement(array, size);
-	Print(array, size);
 
 
 
@@ -151,18 +150,18 @@ void NumberOfElements(int* array, const size_t size) {
 			t += 1;
 		}
 	}
-	cout << t;
 	cout << "\n\n";
 }
 
 void DivideAllElementsWithEvenNumbersByTheFirstElement(int* array, const size_t size) {
-	int newEl;
+	double newEl;
 	int pE; 
 	pE = array[0];
 	for (size_t i = 0; i < size; i++) {
 		if (i % 2 == 0) {
-			newEl = array[i] / pE;
+			newEl =(float)array[i] / pE;
 			array[i] = newEl;
+			cout <<"ar["<< i <<"] = " << newEl << "\n";
 		}
 	}
 }
