@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <iomanip>
 #include <ctime>
+#include <locale>
 using namespace std;
 
 
@@ -60,7 +61,7 @@ enum class Fill { RANDOM, Mannual };
 * \return Код ошибки (0-успех)
 **/
 int main() {
-	setlocale(LC_ALL, "ru");
+	setlocale(LC_ALL, "Russian");
 	srand(time(NULL));
 
 	const int LOW_BOUND = -10, UP_BOUND = 20;
