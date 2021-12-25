@@ -47,7 +47,7 @@ void NumberOfElements(int* array, const size_t size);
 * \param array Массив
 * \param size Размер массива
 **/
-void DivideAllElementsWithEvenNumbersByTheFirstElement(int* array, const size_t size);
+void DivideElementsWithEvenNumbers(int* array, const size_t size);
 
 /**
 * \brief Выбор заполнения массива: рандомное генерирование (0), заполнение вручную (1)
@@ -96,7 +96,7 @@ int main() {
 	NumberOfElements(array, size);
 
 	cout << "Все элементы массива, кратные 2, разделить на первый элемент:\n";
-	DivideAllElementsWithEvenNumbersByTheFirstElement(array, size);
+	DivideElementsWithEvenNumbers(array, size);
 
 
 
@@ -153,7 +153,7 @@ void NumberOfElements(int* array, const size_t size) {
 	cout << "\n\n";
 }
 
-void DivideAllElementsWithEvenNumbersByTheFirstElement(int* array, const size_t size) {
+void DivideElementsWithEvenNumbers(int* array, const size_t size) {
 	double newEl;
 	int pE; 
 	pE = array[0];
