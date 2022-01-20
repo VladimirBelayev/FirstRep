@@ -1,4 +1,4 @@
-﻿﻿#include <iostream>
+﻿#include <iostream>
 #include <cmath>
 
 using namespace std;
@@ -10,7 +10,7 @@ using namespace std;
  * \param nk - член последовательности.
  * \param sum - искомая сумма
  */
-int getSum(int k, int n, int nk, int sum);
+int getSum(int k, int n, double nk, int sum);
 
 /**
  * \brief Точка входа в программу.
@@ -32,7 +32,7 @@ int main()
 	return 0;
 }
 
-int getSum(int k, int n, int nk, int sum) {
+int getSum(int k, int n, double nk, int sum) {
 	double nk = 1;
 	for (k = 0; k < n; k++)
 	{
