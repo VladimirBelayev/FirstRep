@@ -10,7 +10,7 @@ using namespace std;
  * \param nk - член последовательности.
  * \param sum - искомая сумма
  */
-int getSum(int k, int n, double nk, int sum);
+int getSum(int k, int n, int nk, int sum);
 
 /**
  * \brief Точка входа в программу.
@@ -23,17 +23,15 @@ int main()
 	int n;
 	cout << "Сколько членов последовательности сложить?\n";
 	cin >> n;
-	if (n < 2) {
-		return 0;
-	}
-	double nk = 1;
-	double sum = getSum(k, n, nk, sum);
+
+	int nk = 1;
+	int sum = getSum(k, n, nk, sum);
 	cout << "Сумма = " << sum;
 	return 0;
 }
 
-int getSum(int k, int n, double nk, int sum) {
-	double nk = 1;
+int getSum(int k, int n, int nk, int sum) {
+	int nk = 1;
 	for (k = 0; k < n; k++)
 	{
 		nk = (nk * (-1)) / (k + 1);
