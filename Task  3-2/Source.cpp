@@ -31,7 +31,7 @@ int main()
 
 double getSum(const int n) {
 	double nk = 1.0;
-	double sum = 0;
+	double sum = 1.0;
 	for (int k = 0; k < n; k++)
 	{
 		nk = (nk * (-1)) / (k + 1);
