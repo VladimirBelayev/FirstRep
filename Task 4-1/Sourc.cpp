@@ -34,7 +34,7 @@ void Print(int* array, const size_t size);
 * \param size Размер массива
 * \param return Значение суммы
 **/
-int getSum(int* array, const size_t size);
+int GetSum(int* array, const size_t size);
 
 /**
 * \brief Количество элементов больше А и кратных 5
@@ -64,17 +64,19 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 	srand(time(NULL));
 
-	const int LOW_BOUND = -10, UP_BOUND = 20;
-
 	cout << "Введите количество элементов массива: ";
 	int* array;
 	int size;
 	cin >> size;
 
+	/*ПРОВЕРКИ НА ВАЛИДНОСТЬ НЕТ. не понимаю как сделать*/
+
 	array = new int[size];
 	cout << static_cast<int>(Fill::RANDOM) << "- Случайный массив" << endl << static_cast<int>(Fill::Mannual) << "- Заполнить массив вручную" << endl;
 	int choice;
 	cin >> choice;
+
+	const int LOW_BOUND = -10, UP_BOUND = 20;
 
 	const auto fill = static_cast<Fill>(choice);
 	switch (fill)
@@ -134,7 +136,7 @@ void Print(int* array, const size_t size) {
 int getSum(int* array, const size_t size) {
 	int sum = 0;
 	for (size_t i = 0; i < size; i++) {
-		if (i%2!=0) {
+		if (i % 2 != 0) {
 			sum += array[i];
 		}
 	}
@@ -142,13 +144,13 @@ int getSum(int* array, const size_t size) {
 }
 
 void NumberOfElements(int* array, const size_t size) {
-	int t = 0;
+	int count = 0;
 	int A;
 	cout << "Введите A: ";
 	cin >> A;
 	for (size_t i = 0; i < size; i++) {
 		if (array[i] > A && array[i] % 5==0) {
-			t += 1;
+			count += 1;
 		}
 	}
 	cout << "\n\n";
@@ -160,7 +162,7 @@ void DivideElementsWithEvenNumbers(int* array, const size_t size) {
 	pE = array[0];
 	for (size_t i = 0; i < size; i++) {
 		if (i % 2 == 0) {
-			newEl =(float)array[i] / pE;
+			newEl = (float)array[i] / pE;
 			array[i] = newEl;
 			cout <<"ar["<< i <<"] = " << newEl << "\n";
 		}
