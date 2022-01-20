@@ -65,12 +65,13 @@ int main() {
 	srand(time(NULL));
 
 	cout << "Введите количество элементов массива: ";
-	int* array;
 	int size;
 	cin >> size;
-
-	/*ПРОВЕРКИ НА ВАЛИДНОСТЬ НЕТ. не понимаю как сделать*/
-
+	if (size < 1) {
+		cout << "Неверный размер\n";
+		return -1;
+	}
+	int* array;
 	array = new int[size];
 	cout << static_cast<int>(Fill::RANDOM) << "- Случайный массив" << endl << static_cast<int>(Fill::Mannual) << "- Заполнить массив вручную" << endl;
 	int choice;
@@ -93,7 +94,7 @@ int main() {
 		cout << "Ошибка! Не выбран ни один из вариантов";
 	}
 
-	cout << "Сумма элементов с нечётным индексом = " << getSum(array, size) << "\n\n";
+	cout << "Сумма элементов с нечётным индексом = " << GetSum(array, size) << "\n\n";
 
 	cout << "Количество элементов больше A и кратных пяти:\n";
 	NumberOfElements(array, size);
@@ -133,7 +134,7 @@ void Print(int* array, const size_t size) {
 	cout << array[size - 1] << "}\n\n";
 }
 
-int getSum(int* array, const size_t size) {
+int GetSum(int* array, const size_t size) {
 	int sum = 0;
 	for (size_t i = 0; i < size; i++) {
 		if (i % 2 != 0) {
@@ -152,19 +153,22 @@ void NumberOfElements(int* array, const size_t size) {
 		if (array[i] > A && array[i] % 5 == 0) {
 			count += 1;
 		}
-	cout << count;
 	}
+	cout << count;
 	cout << "\n\n";
 }
 
 void DivideElementsWithEvenNumbers(int* array, const size_t size) {
 	double newEl;
 	int pE;
+	double mas=1.0;
 	pE = array[0];
 	for (size_t i = 0; i < size; i++) {
 		if (i % 2 == 0) {
-			newEl = (float)array[i] / pE;
+			mas = array[i];
+			newEl = mas / pE;
 			array[i] = newEl;
 			cout << "ar[" << i << "] = " << newEl << "\n";
 		}
 	}
+}
