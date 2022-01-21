@@ -7,47 +7,47 @@ using namespace std;
 
 
 /**
-* \brief Заполнение массива случайными числами
-* \param array Массив
-* \param size Размер массива
-* \param LOW_BOUND нижняя граница интервала
-* \param UP_BOUND верхняя граница интервала
+* \brief Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІР° СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
+* \param array - РњР°СЃСЃРёРІ
+* \param size Р Р°Р·РјРµСЂ РјР°СЃСЃРёРІР°
+* \param LOW_BOUND РќРёР¶РЅСЏСЏ РіСЂР°РЅРёС†Р° РёРЅС‚РµСЂРІР°Р»Р°
+* \param UP_BOUND Р’РµСЂС…РЅСЏСЏ РіСЂР°РЅРёС†Р° РёРЅС‚РµСЂРІР°Р»Р°
 **/
 void Random(int* array, const size_t  size, const int LOW_BOUND, const int UP_BOUND);
 
 /**
-* \brief Ввод массива с клавиатуры
-* \param array Массив
-* \param size Размер массива
+* \brief Р’РІРѕРґ РјР°СЃСЃРёРІР° СЃ РєР»Р°РІРёР°С‚СѓСЂС‹
+* \param array РњР°СЃСЃРёРІ
+* \param size Р Р°Р·РјРµСЂ РјР°СЃСЃРёРІР°
 **/
 void UserInput(int* array, const size_t size);
 
 /**
-* \brief Вывод массива
-* \param array Массив
-* \param size Размер массива
+* \brief Р’С‹РІРѕРґ РјР°СЃСЃРёРІР°
+* \param array РњР°СЃСЃРёРІ
+* \param size Р Р°Р·РјРµСЂ РјР°СЃСЃРёРІР°
 **/
 void Print(int* array, const size_t size);
 
 /**
-* \brief Меняет последний отрицательный элемент массива на предпоследний элемент
-* \param array Массив
-* \param size Размер массива
+* \brief РњРµРЅСЏРµС‚ РїРѕСЃР»РµРґРЅРёР№ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚ РЅР° РїСЂРµРґРїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚
+* \param array РњР°СЃСЃРёРІ
+* \param size Р Р°Р·РјРµСЂ РјР°СЃСЃРёРІР°
 **/
 void ChangeElement(int* array, const size_t size);
 
 /**
-* \brief Создание массива A из массива D
-* \param array Вводимый массив
-* \param arrayA Сформированный массив
-* \param size Размер массива
+* \brief РЎРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР° A РёР· РјР°СЃСЃРёРІР° D
+* \param array Р’РІРѕРґРёРјС‹Р№ РјР°СЃСЃРёРІ
+* \param arrayA РЎС„РѕСЂРјРёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ
+* \param size Р Р°Р·РјРµСЂ РјР°СЃСЃРёРІР°
 **/
-void CreateAr(int* array, int* arrayA, const size_t size);
+int* CreateAr(int* array, const size_t size);
 
 /**
-* \brief Удаляет элементы с чётной первой цифрой
-* \param array Массив
-* \param size Размер массива
+* \brief РЈРґР°Р»СЏРµС‚ СЌР»РµРјРµРЅС‚С‹ СЃ С‡С‘СЂРЅРѕР№ РїРµСЂРІРѕР№ С†РёС„СЂРѕР№
+* \param array РњР°СЃСЃРёРІ
+* \param size Р Р°Р·РјРµСЂ РјР°СЃСЃРёРІР°
 **/
 void DelEvenNumbEl(int* array, const size_t size);
 
@@ -55,26 +55,26 @@ enum class Fill { RANDOM, Mannual };
 
 
 /**
-* \brief Точка входа в программу
-* \return Код ошибки (0-успех)
+* \brief РўРѕС‡РєР° РІС…РѕРґР° РІ РїСЂРѕРіСЂР°РјРјСѓ
+* \return 0 РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°
 **/
 int main() {
 	setlocale(LC_ALL, "Russian");
 	srand(time(NULL));
 
-	cout << "Введите количество элементов массива: ";
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: ";
 	int* array;
 	int* arrayA;
 	int size;
 	cin >> size;
 	if (size < 1) {
-		cout << "Неверный размер";
+		cout << "РќРµРІРµСЂРЅС‹Р№ СЂР°Р·РјРµСЂ";
 		return -1;
 	}
 
 	array = new int[size];
 	arrayA = new int[size];
-	cout << static_cast<int>(Fill::RANDOM) << "- Случайный массив" << endl << static_cast<int>(Fill::Mannual) << "- Заполнить массив вручную" << endl;
+	cout << static_cast<int>(Fill::RANDOM) << "- РЎР»СѓС‡Р°Р№РЅС‹Р№ РјР°СЃСЃРёРІ" << endl << static_cast<int>(Fill::Mannual) << "-Р—Р°РїРѕР»РЅРёС‚СЊ РјР°СЃСЃРёРІ РІСЂСѓС‡РЅСѓСЋ" << endl;
 	int choice;
 	cin >> choice;
 
@@ -92,16 +92,16 @@ int main() {
 		Print(array, size);
 		break;
 	default:
-		cout << "Ошибка! Не выбран ни один из вариантов";
+		cout << "РћС€РёР±РєР°! РЅРµ РІС‹Р±СЂР°РЅ РЅРё РѕРґРёРЅ РёР· РІР°СЂРёР°РЅС‚РѕРІ";
 	}
-
-	cout << "Замена отрицательного элемента\n";
+  cout << "\n";
+	cout << "Р—Р°РјРµРЅР° РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°\n";
 	ChangeElement(array, size);
-	cout << "Удаление элементов мваасива с чётной первой цифрой\n";
+	cout << "РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° СЃ С‡С‘С‚РЅРѕР№ РїРµСЂРІРѕР№ С†РёС„СЂРѕР№\n";
 	DelEvenNumbEl(array, size);
 	cout << "\n";
-	cout << "Новый массив А\n";
-	CreateAr(array, arrayA, size);
+  
+	arrayA = CreateAr(array, size);
 
 
 	if (array != nullptr)
@@ -109,7 +109,11 @@ int main() {
 		delete[] array;
 		array = nullptr;
 	}
-
+        if (arrayA != nullptr)
+	{
+		delete[] arrayA;
+		arrayA = nullptr;
+	}
 	return 0;
 }
 
@@ -136,29 +140,29 @@ void Print(int* array, const size_t size) {
 
 void ChangeElement(int* array, const size_t size) {
 	int last = 0;
-	int index = 0;
+	size_t index = 0;
 	for (size_t i = 0; i < size; i++) {
 		if (array[i] < 0) {
 			last = array[i];
 			index = i;
 		}
 	}
-	cout << "Последний отрицательный элемент: arr[" << index << "] = " << last << "\n";
+	cout << "РџРѕСЃР»РµРґРЅРёР№ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚: arr[" << index << "] = " << last << "\n";
 	cout << "arr[" << index << "] = " << array[size - 2] << "\n\n";
 }
 
 void DelEvenNumbEl(int* array, const size_t size) {
 	Print(array, size);
-	int j = 0;
-	int s = size;
-	cout << "Конечные значения:\n";
+	size_t j = 0;
+	size_t s = size;
+  int elem_mas;
+	cout << "Р РµР·СѓР»СЊС‚Р°С‚:\n";
 	for (size_t i = 0; i < s; i++) {
-		if (((array[i] / 10) % 2 != 0) && (abs(array[i]) >= 10)) {
-			array[j] = array[i];
-			cout << "ar[" << j << "]= " << array[j] << "\n";
-			j++;
-		}
-		if (abs(array[i]) < 10 && array[i] % 2 != 0) {
+    elem_mas=array[i];
+    while (elem_mas / 10 != 0){
+      elem_mas = elem_mas / 10;
+      }
+		if (elem_mas % 2 != 0) {
 			array[j] = array[i];
 			cout << "ar[" << j << "]= " << array[j] << "\n";
 			j++;
@@ -166,7 +170,9 @@ void DelEvenNumbEl(int* array, const size_t size) {
 	}
 }
 
-void CreateAr(int* array, int* arrayA, const size_t size) {
+int* CreateAr(int* array, const size_t size) {
+	int* arrayA;
+	arrayA = new int[size];
 	for (size_t i = 0; i < size; i++) {
 		if (i % 2 == 0) {
 			arrayA[i] = pow(array[i], 2);
@@ -174,6 +180,6 @@ void CreateAr(int* array, int* arrayA, const size_t size) {
 		else {
 			arrayA[i] = array[i] * 2;
 		}
-		cout << "arrayA[" << i << "] = " << arrayA[i] << "\n";
 	}
+	return arrayA;
 }
