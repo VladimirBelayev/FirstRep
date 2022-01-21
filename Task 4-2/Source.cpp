@@ -20,8 +20,8 @@ void Random(int* array, const size_t  size, const int LOW_BOUND, const int UP_BO
 * \brief Нахождение первой цифры в элементе массива
 * \param array - Массив
 * \param i Номер элемента
-int FirstNumber(int* array, size_t i)
-
+**/
+int FirstNumber(int* array, size_t i, const size_t size);
 /**
 * \brief Ввод массива с клавиатуры
 * \param array Массив
@@ -60,7 +60,6 @@ void DelEvenNumbEl(int* array, const size_t size);
 
 enum class Fill { RANDOM, Mannual };
 
-
 /**
 * \brief Точка входа в программу
 * \return 0 в случае успеха
@@ -77,6 +76,7 @@ int main() {
 		return -1;
 	}
 	int* array;
+  int* arrayA;
 	array = new int[size];
 	cout << static_cast<int>(Fill::RANDOM) << "- Случайный массив" << endl << static_cast<int>(Fill::Mannual) << "-Заполнить массив вручную" << endl;
 	int choice;
@@ -87,7 +87,7 @@ int main() {
 	const auto fill = static_cast<Fill>(choice);
 	switch (fill)
 	{
-	case Fill::RANDOM:
+    case Fill::RANDOM:
 		Random(array, size, LOW_BOUND, UP_BOUND);
 		Print(array, size);
 		break;
@@ -123,10 +123,7 @@ int main() {
 
 void Random(int*array, const size_t  size, const int LOW_BOUND, const int UP_BOUND) {
   random_device rd;
-  mt19937 gen(rd());
-
-  const std::uniform_int_distribution<>uniformIntDistribution(LOW_BOUND, UP_BOUND);
-  auto* array = new int[size];
+  mt19937 gen(rd()); std::uniform_int_distribution<>uniformIntDistribution(LOW_BOUND, UP_BOUND);
 	for (int i = 0; i < size; i++) {
 		array[i] = uniformIntDistribution(gen);
 	}
@@ -163,9 +160,10 @@ void ChangeElement(int* array, const size_t size) {
 void DelEvenNumbEl(int* array, const size_t size) {
 	size_t j = 0;
 	size_t s = size;
+  int first_cifra;
 	cout << "Результат:\n";
 	for (size_t i = 0; i < s; i++) {
-		first_cifra = FirstNumber(array,i)
+		first_cifra = FirstNumber(array,i,size);
 		if (first_cifra % 2 != 0) {
 			array[j] = array[i];
 			cout << "ar[" << j << "]= " << array[j] << "\n";
@@ -188,10 +186,13 @@ int* CreateAr(int* array, const size_t size) {
 	return arrayA;
 }
 
-int FirstNumber(int* array, size_t i){
-	while(array[i] / 10 != 0){
-		array[i]/10
+int FirstNumber(int* array, size_t i, const size_t size){
+  int first_cifra;
+  for (int k = 0; k < size; k++) {
+	while(array[k] / 10 != 0){
+		array[k] = array[k]/10;
 		}
+  }
 	first_cifra = array[i];
 	return first_cifra;
 }
