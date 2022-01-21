@@ -17,6 +17,12 @@ using namespace std;
 void Random(int* array, const size_t  size, const int LOW_BOUND, const int UP_BOUND);
 
 /**
+* \brief Нахождение первой цифры в элементе массива
+* \param array - Массив
+* \param i Номер элемента
+int FirstNumber(int* array, size_t i)
+
+/**
 * \brief Ввод массива с клавиатуры
 * \param array Массив
 * \param size Размер массива
@@ -155,17 +161,12 @@ void ChangeElement(int* array, const size_t size) {
 }
 
 void DelEvenNumbEl(int* array, const size_t size) {
-	Print(array, size);
 	size_t j = 0;
 	size_t s = size;
-  int elem_mas;
 	cout << "Результат:\n";
 	for (size_t i = 0; i < s; i++) {
-    elem_mas=array[i];
-    while (elem_mas / 10 != 0){
-      elem_mas = elem_mas / 10;
-      }
-		if (elem_mas % 2 != 0) {
+		first_cifra = FirstNumber(array,i)
+		if (first_cifra % 2 != 0) {
 			array[j] = array[i];
 			cout << "ar[" << j << "]= " << array[j] << "\n";
 			j++;
@@ -185,4 +186,12 @@ int* CreateAr(int* array, const size_t size) {
 		}
 	}
 	return arrayA;
+}
+
+int FirstNumber(int* array, size_t i){
+	while(array[i] / 10 != 0){
+		array[i]/10
+		}
+	first_cifra = array[i];
+	return first_cifra;
 }
