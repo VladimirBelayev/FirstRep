@@ -21,7 +21,7 @@ void Random(int* array, const size_t  size, const int LOW_BOUND, const int UP_BO
 * \param array - Массив
 * \param i Номер элемента
 **/
-int FirstNumber(int* array, size_t i, const size_t size);
+int FirstNumber(int k);
 /**
 * \brief Ввод массива с клавиатуры
 * \param array Массив
@@ -163,7 +163,8 @@ void DelEvenNumbEl(int* array, const size_t size) {
   int first_cifra;
 	cout << "Результат:\n";
 	for (size_t i = 0; i < s; i++) {
-		first_cifra = FirstNumber(array,i,size);
+    int k = array[i];
+		first_cifra = FirstNumber(k);
 		if (first_cifra % 2 != 0) {
 			array[j] = array[i];
 			cout << "ar[" << j << "]= " << array[j] << "\n";
@@ -186,13 +187,11 @@ int* CreateAr(int* array, const size_t size) {
 	return arrayA;
 }
 
-int FirstNumber(int* array, size_t i, const size_t size){
+int FirstNumber(int k){
   int first_cifra;
-  for (int k = 0; k < size; k++) {
-	while(array[k] / 10 != 0){
-		array[k] = array[k]/10;
+    while(k / 10 != 0){
+		k = k / 10;
 		}
-  }
-	first_cifra = array[i];
+	first_cifra = k;
 	return first_cifra;
 }
