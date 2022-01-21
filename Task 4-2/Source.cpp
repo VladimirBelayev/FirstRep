@@ -63,17 +63,14 @@ int main() {
 	srand(time(NULL));
 
 	cout << "Введите количество элементов массива: ";
-	int* array;
-	int* arrayA;
 	int size;
 	cin >> size;
 	if (size < 1) {
 		cout << "Неверный размер";
 		return -1;
 	}
-
+	int* array;
 	array = new int[size];
-	arrayA = new int[size];
 	cout << static_cast<int>(Fill::RANDOM) << "- Случайный массив" << endl << static_cast<int>(Fill::Mannual) << "-Заполнить массив вручную" << endl;
 	int choice;
 	cin >> choice;
@@ -117,9 +114,14 @@ int main() {
 	return 0;
 }
 
-void Random(int* array, const size_t  size, const int LOW_BOUND, const int UP_BOUND) {
-	for (size_t i = 0; i < size; i++) {
-		array[i] = rand() % (UP_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+void Random(int*array, const size_t  size, const int LOW_BOUND, const int UP_BOUND) {
+  random_device rd;
+  mt19937 gen(rd());
+
+  const std::uniform_int_distribution<>uniformIntDistribution(LOW_BOUND, UP_BOUND);
+  auto* array = new int[size];
+	for (int i = 0; i < size; i++) {
+		array[i] = uniformIntDistribution(gen);
 	}
 }
 
